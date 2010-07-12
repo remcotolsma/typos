@@ -2,9 +2,64 @@
 
 namespace Pronamic\Typos;
 
+/**
+ * Title: Typos
+ * Description: 
+ * Copyright: Copyright (c) 2005 - 2010
+ * Company: Pronamic
+ * @author Remco Tolsma
+ * @version 1.0
+ */
 class Typos {
+	/**
+	 * Constructs and initializes an Typos font object
+	 * 
+	 * @param Font $font the font to read
+	 */
 	public function __construct(Font $font) {
 		$this->font = $font;
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Check if the font is the specified version or versions
+	 * 
+	 * @param mixed $version a integer or array with integers
+	 * @return boolean
+	 */
+	public function isSfntVersion($version) {
+		$v = $this->font->getTableDirectory()->getSfntVersion();
+
+		if(is_array($version)) {
+			return in_array($v, $version);
+		} else {
+			return $v == $version;
+		}
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Check if the font is an TrueType font
+	 * 
+	 * @return boolean true if the font is an TrueType font, false otherwise
+	 */
+	public function isTrueType() {
+		$versions = array(TableDirectory::SFNT_VERSION_1_0, TableDirectory::SFNT_VERSION_TRUE);
+
+		return $this->isSfntVersion($versions);
+	}
+
+	/**
+	 * Check if the font is an OpenType font
+	 * 
+	 * @return boolean true if the font is an OpenType font, false otherwise
+	 */
+	public function isOpenType() {
+		$version = TableDirectory::SFNT_VERSION_OTTO;
+
+		return $this->isSfntVersion($version);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -130,21 +185,26 @@ class Typos {
 		return $this->font->__toString();
 	}
 
-
 	///////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Load a TrueType font from string
+	 * Load a font from string
 	 * @doc Creating streams from strings in PHP: http://www.rooftopsolutions.nl/blog/222
 	 * 
 	 * @param string $string
-	 * @return 
+	 * @return self
 	 */
 	public static function loadFromString($string) {
 		// return self::loadFromFile('data://text/plain,' . $string);
 		return self::loadFromFile('data://text/plain;base64,'  . base64_encode($string));
 	}
 
+	/**
+	 * Load a font form file
+	 * 
+	 * @param string $file the path to an file
+	 * @return self
+	 */
 	public static function loadFromFile($file) {
 		// On systems which differentiate between binary and text files (i.e. Windows) 
 		/// the file must be opened with 'b' included in fopen()  mode parameter. 
@@ -153,6 +213,12 @@ class Typos {
 		return self::loadFromResource($resource);
 	}
 
+	/**
+	 * Load a font from the specified resource
+	 * 
+	 * @param resource $resource
+	 * @return self
+	 */
 	public static function loadFromResource($resource) {
 		$stream = new Stream($resource);
 

@@ -3,7 +3,7 @@
 namespace Pronamic\Typos;
 
 /**
- * Title: Naming table reader
+ * Title: Name table reader
  * Description:
  * Copyright: Copyright (c) 2005 - 2010
  * Company: Pronamic

@@ -3,7 +3,7 @@
 namespace Pronamic\Typos;
 
 /**
- * Title: Font name record
+ * Title: Name record
  * Description:
  * Copyright: Copyright (c) 2005 - 2010
  * Company: Pronamic
