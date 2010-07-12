@@ -1,6 +1,8 @@
 <?php
 
-namespace Pronamic\Typos;
+namespace Pronamic\Typos\IO;
+
+use Pronamic\Typos\TableDirectory;
 
 /**
  * Title: Font table directory reader

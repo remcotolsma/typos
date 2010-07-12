@@ -158,7 +158,7 @@ class TableDirectory {
 	/**
 	 * Get the version of this table directory
 	 * 
-	 * @return string
+	 * @return int
 	 */
 	public function getSfntVersion() {
 		return $this->sfntVersion;
@@ -167,7 +167,7 @@ class TableDirectory {
 	/**
 	 * Set the SFNT version
 	 * 
-	 * @param string $version
+	 * @param int $version
 	 */
 	public function setSfntVersion($version) {
 		$this->sfntVersion = $version;

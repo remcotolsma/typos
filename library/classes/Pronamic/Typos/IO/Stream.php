@@ -1,6 +1,6 @@
 <?php
 
-namespace Pronamic\Typos;
+namespace Pronamic\Typos\IO;
 
 /**
  * Title: Stream
