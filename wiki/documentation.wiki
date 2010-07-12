@@ -1,0 +1,11 @@
+#summary Using Typos to read information from font files
+
+= Introduction =
+
+Typos is a PHP library for reading information from font files. Currently it can only read data from TrueType and OpenType font files. The library uses the new _namespace_ functionality within PHP 5.3 (and higher). 
+
+= How to use? =
+
+{{{
+verbatim code block
+}}}
