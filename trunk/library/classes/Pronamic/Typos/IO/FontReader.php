@@ -1,6 +1,9 @@
 <?php
 
-namespace Pronamic\Typos;
+namespace Pronamic\Typos\IO;
+
+use Pronamic\Typos\Font;
+use Pronamic\Typos\Table;
 
 /**
  * Title: Font reader

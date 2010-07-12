@@ -1,6 +1,9 @@
 <?php
 
-namespace Pronamic\Typos;
+namespace Pronamic\Typos\IO;
+
+use Pronamic\Typos\NameTable;
+use Pronamic\Typos\TableDirectoryEntry;
 
 /**
  * Title: Name table reader

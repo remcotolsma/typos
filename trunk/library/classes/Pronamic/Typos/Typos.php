@@ -11,6 +11,20 @@ namespace Pronamic\Typos;
  * @version 1.0
  */
 class Typos {
+	public static $defaultQuery;
+
+	public static function getDefaultQuery() {
+		if(self::$defaultQuery == null) {
+			self::$defaultQuery = array();
+			self::$defaultQuery[] = new NameRecordQuery(NameTable::PLATFORM_MICROSOFT, Microsoft\Encodings::UNICODE_BMP, Microsoft\Languages::ENGLISH_UNITED_STATES);
+			self::$defaultQuery[] = new NameRecordQuery(NameTable::PLATFORM_MACINTOSH, Macintosh\Encodings::ROMAN, Macintosh\Languages::ENGLISH);
+		}
+
+		return self::$defaultQuery;
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * Constructs and initializes an Typos font object
 	 * 
@@ -18,6 +32,17 @@ class Typos {
 	 */
 	public function __construct(Font $font) {
 		$this->font = $font;
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * Get the version of the font
+	 * 
+	 * @return int
+	 */
+	public function getSfntVersion() {
+		return $this->font->getTableDirectory()->getSfntVersion();
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -29,12 +54,10 @@ class Typos {
 	 * @return boolean
 	 */
 	public function isSfntVersion($version) {
-		$v = $this->font->getTableDirectory()->getSfntVersion();
-
 		if(is_array($version)) {
-			return in_array($v, $version);
+			return in_array($this->getSfntVersion(), $version);
 		} else {
-			return $v == $version;
+			return $this->getSfntVersion() == $version;
 		}
 	}
 
@@ -69,11 +92,15 @@ class Typos {
 	 * 
 	 * @param int $nameId
 	 */
-	public function getNameRecord($nameId, $search) {
+	public function getNameRecord($nameId, $query) {
 		$nameTable = $this->font->nameTable;
 
 		if($nameTable != null) {
-			$nameRecord = $nameTable->findNameRecord($nameId, $search);
+			if($query == null) {
+				$query = self::getDefaultQuery();
+			}
+
+			$nameRecord = $nameTable->findNameRecord($nameId, $query);
 
 			if($nameRecord != null) {
 				return $nameRecord->convertString();
@@ -90,8 +117,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getCopyrightNotice($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_COPYRIGHT, $search);
+	public function getCopyrightNotice($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_COPYRIGHT, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -101,8 +128,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getFontFamilyName($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_FONT_FAMILY_NAME, $search);
+	public function getFontFamilyName($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_FONT_FAMILY_NAME, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -112,8 +139,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getFontSubFamilyName($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_FONT_SUB_FAMILY_NAME, $search);
+	public function getFontSubFamilyName($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_FONT_SUB_FAMILY_NAME, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -123,8 +150,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getUniqueFontIdentifier($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_UNIQUE_FONT_IDENTIFIER, $search);
+	public function getUniqueFontIdentifier($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_UNIQUE_FONT_IDENTIFIER, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -134,8 +161,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getFullFontName($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_FULL_FONT_NAME, $search);
+	public function getFullFontName($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_FULL_FONT_NAME, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -146,8 +173,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getVersion($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_VERSION, $search);
+	public function getVersion($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_VERSION, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -157,8 +184,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getPostScriptName($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_POSTSCRIPT_NAME, $search);
+	public function getPostScriptName($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_POSTSCRIPT_NAME, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -170,8 +197,8 @@ class Typos {
 	 *
 	 * @return string
 	 */
-	public function getTradeMark($search) {
-		return $this->getNameRecord(NameTable::NAME_ID_TRADEMARK, $search);
+	public function getTradeMark($query = null) {
+		return $this->getNameRecord(NameTable::NAME_ID_TRADEMARK, $query);
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -220,9 +247,9 @@ class Typos {
 	 * @return self
 	 */
 	public static function loadFromResource($resource) {
-		$stream = new Stream($resource);
+		$stream = new IO\Stream($resource);
 
-		$fontReader = new FontReader();
+		$fontReader = new IO\FontReader();
 
 		$font = $fontReader->read($stream);
 

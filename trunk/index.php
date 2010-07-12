@@ -32,6 +32,17 @@ header('Content-Type: text/html; charset=UTF-8', true);
 		$query[] = new NameRecordQuery(NameTable::PLATFORM_MICROSOFT, Microsoft\Encodings::UNICODE_BMP, Microsoft\Languages::ENGLISH_UNITED_STATES);
 		$query[] = new NameRecordQuery(NameTable::PLATFORM_MACINTOSH, Macintosh\Encodings::ROMAN, Macintosh\Languages::ENGLISH);
 
+		$fonts = array();
+
+		foreach($files as $file) {
+			$fonts[] = Typos::loadFromFile($file);
+		}
+
+		$fontsView = new Views\FontsView();
+		$fontsView->setInclude('views/fonts-table-view.php');
+		$fontsView->setFonts($fonts);
+		$fontsView->render();
+		
 		?>
 
 		<?php foreach($files as $file): ?>
