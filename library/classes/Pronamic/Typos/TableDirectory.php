@@ -3,7 +3,7 @@
 namespace Pronamic\Typos;
 
 /**
- * Title: TrueType font table directory
+ * Title: Font table directory
  * Description:
  * Copyright: Copyright (c) 2005 - 2010
  * Company: Pronamic Internet, Vormgeving en Software

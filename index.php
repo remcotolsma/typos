@@ -21,7 +21,7 @@ header('Content-Type: text/html; charset=UTF-8', true);
 
 		<?php
 
-		$fonts = array(
+		$files = array(
 			'fonts/Pecita/Pecita.ttf' , 
 			'fonts/Pecita/Pecita.otf' , 
 			'fonts/Strato/Strato-linked.ttf' , 
@@ -34,18 +34,12 @@ header('Content-Type: text/html; charset=UTF-8', true);
 
 		?>
 
-		<?php foreach($fonts as $font): ?>
+		<?php foreach($files as $file): ?>
 
 		<h2>TTF</h2>
 
-		<?php
+		<?php $font = Typos::loadFromFile($file); ?>
 
-		$string = file_get_contents($font);
-
-		$font = Typos::loadFromFile($font);
-		$font = Typos::loadFromString($string);
-
-		?>
 		<dl>
 			<dt>Copyright notice</dt>
 			<dd><?php echo $font->getCopyrightNotice($query); ?></dd>
@@ -73,6 +67,9 @@ header('Content-Type: text/html; charset=UTF-8', true);
 
 			<dt>OpenType</dt>
 			<dd><?php echo $font->isOpenType() ? 'yes' : 'no'; ?></dd>
+
+			<dt>Path</dt>
+			<dd><?php echo Manager::getPath($font, $file); ?></dd>
 
 			<dt>Overview</dt>
 			<dd>
