@@ -48,31 +48,31 @@ header('Content-Type: text/html; charset=UTF-8', true);
 		?>
 		<dl>
 			<dt>Copyright notice</dt>
-			<dd><?php echo $font->getCopyrightNotice($query); ?>
+			<dd><?php echo $font->getCopyrightNotice($query); ?></dd>
 
 			<dt>Font family name</dt>
-			<dd><?php echo $font->getFontFamilyName($query); ?>
+			<dd><?php echo $font->getFontFamilyName($query); ?></dd>
 
 			<dt>Font sub family name</dt>
-			<dd><?php echo $font->getFontSubFamilyName($query); ?>
+			<dd><?php echo $font->getFontSubFamilyName($query); ?></dd>
 
 			<dt>Unique font identifier</dt>
-			<dd><?php echo $font->getUniqueFontIdentifier($query); ?>
+			<dd><?php echo $font->getUniqueFontIdentifier($query); ?></dd>
 
 			<dt>Full font name</dt>
-			<dd><?php echo $font->getFullFontName($query); ?>
+			<dd><?php echo $font->getFullFontName($query); ?></dd>
 
 			<dt>Version</dt>
-			<dd><?php echo $font->getVersion($query); ?>
+			<dd><?php echo $font->getVersion($query); ?></dd>
 
 			<dt>Post script name</dt>
-			<dd><?php echo $font->getPostScriptName($query); ?>
+			<dd><?php echo $font->getPostScriptName($query); ?></dd>
 
 			<dt>TrueType</dt>
-			<dd><?php echo $font->isTrueType() ? 'yes' : 'no'; ?>
+			<dd><?php echo $font->isTrueType() ? 'yes' : 'no'; ?></dd>
 
 			<dt>OpenType</dt>
-			<dd><?php echo $font->isOpenType() ? 'yes' : 'no'; ?>
+			<dd><?php echo $font->isOpenType() ? 'yes' : 'no'; ?></dd>
 
 			<dt>Overview</dt>
 			<dd>
