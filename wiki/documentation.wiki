@@ -7,5 +7,19 @@ Typos is a PHP library for reading information from font files. Currently it can
 = How to use? =
 
 {{{
-verbatim code block
+<?php
+
+namespace Pronamic\Typos;
+
+include 'library/bootstrap.php';
+
+$font = Typos::loadFromFile('fonts/Pecita/Pecita.otf');
+
+$query = array();
+$query[] = new NameRecordQuery(NameTable::PLATFORM_MICROSOFT, Microsoft\Encodings::UNICODE_BMP, Microsoft\Languages::ENGLISH_UNITED_STATES);
+$query[] = new NameRecordQuery(NameTable::PLATFORM_MACINTOSH, Macintosh\Encodings::ROMAN, Macintosh\Languages::ENGLISH);
+
+echo $font->getFullFontName($query);
+
+?>
 }}}
