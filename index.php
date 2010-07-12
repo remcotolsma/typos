@@ -28,9 +28,9 @@ header('Content-Type: text/html; charset=UTF-8', true);
 			'fonts/Strato/Strato-unlinked.ttf' 
 		);
 
-		$search = array();
-		$search[] = new NameRecordQuery(NameTable::PLATFORM_MICROSOFT, Microsoft\Encodings::UNICODE_BMP, Microsoft\Languages::ENGLISH_UNITED_STATES);
-		$search[] = new NameRecordQuery(NameTable::PLATFORM_MACINTOSH, Macintosh\Encodings::ROMAN, Macintosh\Languages::ENGLISH);
+		$query = array();
+		$query[] = new NameRecordQuery(NameTable::PLATFORM_MICROSOFT, Microsoft\Encodings::UNICODE_BMP, Microsoft\Languages::ENGLISH_UNITED_STATES);
+		$query[] = new NameRecordQuery(NameTable::PLATFORM_MACINTOSH, Macintosh\Encodings::ROMAN, Macintosh\Languages::ENGLISH);
 
 		?>
 
@@ -48,25 +48,25 @@ header('Content-Type: text/html; charset=UTF-8', true);
 		?>
 		<dl>
 			<dt>Copyright notice</dt>
-			<dd><?php echo $font->getCopyrightNotice($search); ?>
+			<dd><?php echo $font->getCopyrightNotice($query); ?>
 
 			<dt>Font family name</dt>
-			<dd><?php echo $font->getFontFamilyName($search); ?>
+			<dd><?php echo $font->getFontFamilyName($query); ?>
 
 			<dt>Font sub family name</dt>
-			<dd><?php echo $font->getFontSubFamilyName($search); ?>
+			<dd><?php echo $font->getFontSubFamilyName($query); ?>
 
 			<dt>Unique font identifier</dt>
-			<dd><?php echo $font->getUniqueFontIdentifier($search); ?>
+			<dd><?php echo $font->getUniqueFontIdentifier($query); ?>
 
 			<dt>Full font name</dt>
-			<dd><?php echo $font->getFullFontName($search); ?>
+			<dd><?php echo $font->getFullFontName($query); ?>
 
 			<dt>Version</dt>
-			<dd><?php echo $font->getVersion($search); ?>
+			<dd><?php echo $font->getVersion($query); ?>
 
 			<dt>Post script name</dt>
-			<dd><?php echo $font->getPostScriptName($search); ?>
+			<dd><?php echo $font->getPostScriptName($query); ?>
 
 			<dt>TrueType</dt>
 			<dd><?php echo $font->isTrueType() ? 'yes' : 'no'; ?>
