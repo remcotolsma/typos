@@ -1,0 +1,86 @@
+FONTLOG
+Pfennig font family
+==========================
+
+This file provides detailed information on the Pfennig family of fonts.
+This information should be distributed along with the Pfennig fonts and
+any derivative works.
+
+
+Basic Font Information
+----------------------
+
+Pfennig is a sans-serif font with support for Latin and Cyrillic character sets.
+It contains sufficient characters for Latin-0 through Latin-10, as well as
+all modern Cyrillic scripts, the full Vietnamese range, and the Pan-Nigerian
+Alphabet.  It supports the standard Roman ligatures and uses OpenType tables for
+diacritic placement.
+
+Pfennig supports the following Unicode ranges:
+
+Range          Description            Coverage
+..............................................
+U+0020-U+007F  Basic Latin            Full
+U+00A0-U+00FF  Latin-1 Supplement     Full
+U+0100-U+017F  Latin Extended-A       Full
+U+0180-U+024F  Latin Extended-B       123/208
+U+0250-U+02AF  IPA Extensions         24/96
+U+02B0-U+02FF  Spacing Modifiers      7/80
+U+0300-U+036F  Combining Diacritics   30/112
+U+0400-U+04FF  Cyrillic               214/256
+U+0500-U+052F  Cyrillic Supplement    10/36
+U+1E00-U+1EFF  Latin Extended Add'l   112/256
+U+2000-U+206F  General Punctuation    13/107
+U+20A0-U+20CF  Currency Symbols       1/22 (Euro sign only)
+U+2100-U+214F  Letterlike Symbols     1/80 (Numero only)
+U+2C60-U+2C7F  Latin Extended-C       3/29
+U+FB00-U+FB06  Latin Ligatures        5/7 (all except archaic ligatures)
+
+
+ChangeLog
+---------
+2010-04-23	Completed support for all Cyrillic codepoints for modern
+		orthographies.
+2010-04-14	More glyphs: African, modern Pinyin, Amerindian
+2010-04-12	Moved non-Unicode glyphs to PUA; added a few more African
+		glyphs.
+2010-04-06	Diacritic improvement in Bold Vietnamese. Additional glyphs
+		for Skolt Sami, the Pan-Nigerian Alphabet, and various other
+		African languages.
+2010-03-31	Further spacing enhancements in non-italic. Improvements in
+		Vietnamese range in Medium to prevent excessive diacritic
+		height. Spacing improvements in italic ligatures.
+2009-09-18	Major overhaul of spacing in non-italic
+2009-08-06	Added Vietnamese range.
+2009-07-30	Kerned Latin ranges.
+2009-07-29	Added Cyrillic range.
+2009-07-24	Initial release
+
+
+Information for Contributors
+----------------------------
+
+This font is licensed under the Open Font License (OFL).  Under the terms of
+the OFL, you may make any modifications you like, provided that, if you
+distribute the resulting font, (a) you change the name of the resulting font,
+and (b) the resulting font is also released under the OFL.
+
+You can read more about the OFL here:
+http://scripts.sil.org/OFL
+
+If you'd like to make changes to the original font, you are free to contact
+the author of the original font (for contact information, please see the
+"Contributors" section below).  Glyph changes should be in a FontForge .sfd
+file (please make sure your version of FontForge is reasonably up-to-date).
+Please send *only* the changed glyphs, not the entire font range.  The author
+reserves the right to reject or modify any contributions.  If your contribution
+is accepted, your name will appear in the Contributors section (unless you
+specify otherwise).
+
+
+Contributors
+------------
+
+Daniel Johnson (font maintainer)
+il.basso.buffo at gmail dot com
+http://openfontlibrary.org/media/people/Daniel_J
