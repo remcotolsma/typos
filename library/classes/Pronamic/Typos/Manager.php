@@ -36,7 +36,7 @@ class Manager {
 	 * @param string $file the path to the font file
 	 * @return string an path
 	 */
-	public static function getPath(Typos $font, $file) {
+	public static function getPath(Typos $font, $file = null) {
 		$query = array();
 		$query[] = new NameRecordQuery(NameTable::PLATFORM_MICROSOFT, Microsoft\Encodings::UNICODE_BMP, Microsoft\Languages::ENGLISH_UNITED_STATES);
 		$query[] = new NameRecordQuery(NameTable::PLATFORM_MACINTOSH, Macintosh\Encodings::ROMAN, Macintosh\Languages::ENGLISH);
@@ -82,7 +82,9 @@ class Manager {
 		$path .= $fullFontName;
 
 		// File size
-		$path .= sprintf(' [%0.2f KiB]', filesize($file) / 1024);
+		if($file != null) {
+			$path .= sprintf(' [%0.2f KiB]', filesize($file) / 1024);
+		}
 
 		// File extension
 		if($font->isTrueType()) {

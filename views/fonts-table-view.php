@@ -16,12 +16,15 @@ if($fonts = $this->getFonts()) { ?>
 			<th scope="col">Version</th>
 			<th scope="col">Post script name</th>
 			<th scope="col">Version</th>
+			<th scope="col">Path</th>
 		</tr>
 	</thead>
 
 	<tbody>
 
-		<?php foreach($fonts as $font) { ?>
+		<?php foreach($fonts as $font) { 
+
+		if($font = self::getAs($font, __NAMESPACE__ . '\Typos')) { ?>
 
 		<tr>
 			<td>
@@ -65,9 +68,12 @@ if($fonts = $this->getFonts()) { ?>
 
 				?>
 			</td>
+			<td>
+				<?php echo Manager::getPath($font); ?>
+			</td>
 		</tr>
 
-		<?php } ?>
+		<?php } } ?>
 
 	</tbody>
 </table>
