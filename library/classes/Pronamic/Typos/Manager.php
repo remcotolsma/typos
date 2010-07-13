@@ -87,7 +87,7 @@ class Manager {
 		}
 
 		// File extension
-		if($font->isTrueType()) {
+		if($font->isOpenType()) {
 			$path .= '.otf';
 		} else {
 			$path .= '.ttf';

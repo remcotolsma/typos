@@ -22,10 +22,18 @@ header('Content-Type: text/html; charset=UTF-8', true);
 		<?php
 
 		$files = array(
-			'fonts/Pecita/Pecita.ttf' , 
-			'fonts/Pecita/Pecita.otf' , 
-			'fonts/Strato/Strato-linked.ttf' , 
-			'fonts/Strato/Strato-unlinked.ttf' 
+			'fonts/openfontlibrary.org/Eadui/Eadui.ttf' ,
+			'fonts/openfontlibrary.org/Eadui/EaduiFill.ttf' ,
+			'fonts/openfontlibrary.org/Megrim/Megrim.otf' ,
+			'fonts/openfontlibrary.org/Pecita/Pecita.ttf' , 
+			'fonts/openfontlibrary.org/Pecita/Pecita.otf' , 
+			'fonts/openfontlibrary.org/Pfennig/Pfennig.otf' ,
+			'fonts/openfontlibrary.org/Pfennig/PfennigBold.otf' ,
+			'fonts/openfontlibrary.org/Pfennig/PfennigBoldItalic.otf' ,
+			'fonts/openfontlibrary.org/Pfennig/PfennigItalic.otf' ,
+			'fonts/openfontlibrary.org/Strato/Strato-linked.ttf' , 
+			'fonts/openfontlibrary.org/Strato/Strato-unlinked.ttf' ,
+			'fonts/problems/Herakles/Herakles.ttf' 
 		);
 
 		$query = array();

@@ -1,0 +1,20 @@
+1. FONTLOG for Eadui
+
+   This file provides detailed information on the Eadui and EaduiFill
+   Font Software.  This information should be distributed along with
+   the Eadui and EaduiFill fonts and any derivative works.
+
+2. Basic Font Information
+
+   A font based on the hand of the eleventh-century scribe Eadui
+   Basan. See file eadui.pdf for more details and instructions.
+
+3. ChangeLog
+
+   11 Jul 2010 (Peter S. Baker) Eadui and EaduiFill version 1.0.
+   - Initial release
+
+4  Acknowledgements
+
+   None yet. Feature requests, bug reports and contributions should be
+   sent to Peter S. Baker, b dot tarde at gmail dot com
