@@ -183,10 +183,6 @@ class View {
 	 * @return the object or null
 	 */
 	public static function getAs($object, $class) {
-		if($object instanceof $class) {
-			return $object;
-		} else {
-			return null;
-		}
+		return \Pronamic\Lang\Object::getAs($object, $class);
 	}
 }
