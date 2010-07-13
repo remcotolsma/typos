@@ -2,6 +2,14 @@
 
 namespace Pronamic\Typos;
 
+/**
+ * Title: Encoding class
+ * Description:
+ * Copyright: Copyright (c) 2005 - 2010
+ * Company: Pronamic Internet, Vormgeving en Software
+ * @author Remco Tolsma
+ * @version 1.0
+ */
 class Encoding {
 	/**
 	 * Encodings table
