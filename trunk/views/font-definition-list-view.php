@@ -33,7 +33,7 @@ if($font = self::getAs($this->getFont(), __NAMESPACE__ . '\Typos\Typos')) { ?>
 	<dd><?php echo $font->isOpenType() ? 'yes' : 'no'; ?></dd>
 
 	<dt>Path</dt>
-	<dd><?php echo Typos\Manager::getPath($font, $file); ?></dd>
+	<dd><?php echo Typos\Manager::getPath($font); ?></dd>
 
 	<dt>Overview</dt>
 	<dd>
