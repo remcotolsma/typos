@@ -42,6 +42,17 @@ class FontReader {
 			$font->nameTable = $nameTable;
 		}
 
+		// Read head table
+		$directoryEntry = $tableDirectory->getEntryByTag(Table::TABLE_HEAD);
+
+		if($directoryEntry != null) {
+			$resource->seek($directoryEntry->getOffset());
+
+			$headTable = HeadTableReader::read($resource, $directoryEntry);
+
+			$font->headTable = $headTable;
+		}
+
 		return $font;
 	}
 }

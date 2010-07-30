@@ -18,6 +18,13 @@ abstract class Table {
 	 */
 	const TABLE_NAME = 0x6E616D65;
 
+	/**
+	 * A indicator for the head table
+	 * 
+	 * @var int
+	 */
+	const TABLE_HEAD = 0x68656164;
+
 	///////////////////////////////////////////////////////////////////////////
 
 	/**

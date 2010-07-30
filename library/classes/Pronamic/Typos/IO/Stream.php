@@ -12,6 +12,18 @@ namespace Pronamic\Typos\IO;
  */
 class Stream {
 	/**
+	 * The number of seconds between the epoch in 1904 and 1970
+	 * 365 * 86400 * (1970 - 1904) + 86400 * 17 = 2082844800
+	 * 
+	 * @doc http://programming.itags.org/unix-linux-programming/98776/
+	 * 
+	 * @var int
+	 */
+	const SEC_BETWEEEN_1904_AND_1970 = 2082844800;
+
+	///////////////////////////////////////////////////////////////////////////
+
+	/**
 	 * The resource 
 	 * 
 	 * @var resource
@@ -63,13 +75,31 @@ class Stream {
 	///////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Read and unpack the specified length and format
+	 * 
+	 * @param string $format
+	 * @param int $length
+	 */
+	private function readUnpack($format, $length) {
+		$data = $this->read($length);
+
+		if(strlen($data) == $length) {
+			return unpack($format, $data);
+		} else {
+			throw new \Exception('Not able read the specified length (' . $length . ') and unpack the data in the specified format (' . $format . ')');
+		}
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
+	/**
 	 * Read an USHORT (16 bit) from the file
 	 * All TrueType fonts use Motorola-style byte ordering (Big Endian)
 	 * 
 	 * @return 
 	 */
 	public function readUShort() {
-		$data = unpack('n', $this->read(2));
+		$data = $this->readUnpack('n', 2);
 
 		return $data[1];
 	}
@@ -81,7 +111,7 @@ class Stream {
 	 * @return 
 	 */
 	public function readULong() {
-		$data = unpack('N', $this->read(4));
+		$data = $this->readUnpack('N', 4);
 
 		return $data[1];
 	}
@@ -92,5 +122,24 @@ class Stream {
 	 */
 	public function readFixed() {
 		return $this->readULong();
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Read a long date time
+	 * 
+	 * @return \DateTime
+	 */
+	public function readLongDateTime() {
+//		$secondsSince1904 = $this->readULong();
+
+		$value = $this->read(8);
+
+		printf('%b', $value);
+
+		$secondsSince1970 = $secondsSince1904 - self::SEC_BETWEEEN_1904_AND_1970;
+
+		return new \DateTime('@' . $secondsSince1970);
 	}
 }
