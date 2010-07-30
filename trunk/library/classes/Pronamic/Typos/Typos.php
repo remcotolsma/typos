@@ -11,8 +11,18 @@ namespace Pronamic\Typos;
  * @version 1.0
  */
 class Typos {
+	/**
+	 * The default query for getting name records
+	 * 
+	 * @var array
+	 */
 	public static $defaultQuery;
 
+	/**
+	 * Get the default query for the name record
+	 * 
+	 * @return array
+	 */
 	public static function getDefaultQuery() {
 		if(self::$defaultQuery == null) {
 			self::$defaultQuery = array();
