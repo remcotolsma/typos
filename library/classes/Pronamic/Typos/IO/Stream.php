@@ -136,8 +136,6 @@ class Stream {
 
 		$value = $this->read(8);
 
-		printf('%b', $value);
-
 		$secondsSince1970 = $secondsSince1904 - self::SEC_BETWEEEN_1904_AND_1970;
 
 		return new \DateTime('@' . $secondsSince1970);
